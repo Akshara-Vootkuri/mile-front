@@ -9,6 +9,12 @@ const Wrapper = styled.div`
   padding: 30px;
   background: #f5f7ff;
   min-height: 100vh;
+   @media (max-width: 768px) {
+    padding: 20px;
+  }
+  @media (max-width: 480px) {
+    padding: 15px;
+  }
 `;
 
 const Title = styled.h2`
@@ -16,12 +22,26 @@ const Title = styled.h2`
   font-size: 28px;
   font-weight: 800;
   color: #4a4a4a;
+   @media (max-width: 768px) {
+    font-size: 24px;
+  }
+  @media (max-width: 480px) {
+    font-size: 20px;
+    text-align: center;
+  }
 `;
 
 const DateRow = styled.div`
   display: flex;
   gap: 40px;
   margin-bottom: 20px;
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 15px;
+  }
 `;
 
 const DateBox = styled.div`
@@ -33,6 +53,9 @@ const DateBox = styled.div`
     font-weight: 600;
     color: #6c63ff;
   }
+     @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const SearchRow = styled.div`
@@ -40,6 +63,21 @@ const SearchRow = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 25px 0;
+   @media (max-width: 768px) {
+    gap: 15px;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: stretch;
+
+    input {
+      width: 100% !important;
+    }
+    button {
+      width: 100%;
+    }
+  }
 `;
 
 const ColorButton = styled(Button)`
@@ -69,8 +107,18 @@ const StyledInput = styled(Input)`
     border-color: #867dff;
     box-shadow: 0 0 4px #867dff;
   }
+     @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
-
+const TableWrapper = styled.div`
+  width: 100%;
+  overflow-x: auto;   /* important */
+  
+  @media (max-width: 600px) {
+    padding-bottom: 10px;
+  }
+`;
 const StyledTable = styled(Table)`
   background: white;
   border-radius: 10px;
@@ -90,6 +138,17 @@ const StyledTable = styled(Table)`
   .ant-table-row:hover > td {
     background: #f3f2ff;
   }
+      @media (max-width: 600px) {
+    .ant-table-thead > tr > th {
+      font-size: 12px;
+      padding: 8px;
+    }
+    .ant-table-tbody > tr > td {
+      font-size: 12px;
+      padding: 8px;
+    }
+  }
+
 `;
 
 export const Page1 = () => {
@@ -219,13 +278,14 @@ export const Page1 = () => {
           + Add Product
         </ColorButton>
       </SearchRow>
-
+      <TableWrapper>
       <StyledTable
         dataSource={filteredProducts}
         columns={columns}
         rowKey="id"
         pagination={{ pageSize: 5 }}
       />
+      </TableWrapper>
 
       <Modal
         title="Enter new product"
