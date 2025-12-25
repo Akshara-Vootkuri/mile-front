@@ -126,7 +126,7 @@ export const Page2 = () => {
         createdDate: date,
       };
 
-      const res = await fetch("https://web-production-ae16.up.railway.app/products/add", {
+      const res = await fetch("http://localhost:8082/products/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

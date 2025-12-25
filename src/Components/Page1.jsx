@@ -230,8 +230,8 @@ export const Page1 = () => {
   const fetchProducts = async () => {
     try {
       const res = await fetch(
-        `https://web-production-ae16.up.railway.app/products?search=${search}&startDate=${dayjs(start).format(
-    "YYYY-MM-DD"
+        `http://localhost:8082/products?search=${search}&startDate=${dayjs(start).format(
+          "YYYY-MM-DD"
         )}&endDate=${dayjs(end).format("YYYY-MM-DD")}`,
         { headers: authHeader() }
       );
